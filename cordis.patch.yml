@@ -1,0 +1,17 @@
+# ============================================================================
+# gal-eat —— DSH bundle patch（挂载声明）
+# ============================================================================
+# 依赖 gal-view（前置插件）：本插件经 gal-view 提供的 galViewExt 扩展缝接入
+# 游戏模式。未安装 gal-view 时插件不会崩，只在 GAL 视窗里显示一条友好提示。
+#
+# 安装：
+#   dsh plugin --profile desktop add file:<gal-eat-*.tar.gz>
+#   dsh plugin --profile web     add file:<gal-eat-*.tar.gz>
+#
+# bundle 顺序：必须排在 gal-view **之后**（profile 的 dsh.profile.bundles 里
+# gal-view 在前、gal-eat 在后），否则启动早期可能取不到 galViewExt 服务。
+# ============================================================================
+
+- insert:
+    - id: gal-eat
+      name: gal-eat

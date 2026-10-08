@@ -1,0 +1,67 @@
+{
+  "name": "gal-eat",
+  "version": "0.10.0",
+  "private": true,
+  "type": "module",
+  "description": "GAL 视窗的吃饭插件：鲸元券/饱食度/好感度 HUD + 美食街吃饭流程（需要 gal-view 0.4+）",
+  "keywords": [
+    "dsh",
+    "dsh-plugin",
+    "gal-view",
+    "galgame",
+    "eat"
+  ],
+  "main": "./lib/index.js",
+  "exports": {
+    ".": "./lib/index.js",
+    "./client": "./.dsh-plugin/client.js",
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "lib",
+    "assets",
+    "README.md",
+    "cordis.patch.yml"
+  ],
+  "dsh": {
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    },
+    "client": {
+      "platform": "web",
+      "inject": [
+        "slots"
+      ]
+    }
+  },
+  "peerDependencies": {
+    "gal-view": ">=0.4.0"
+  },
+  "peerDependenciesMeta": {
+    "gal-view": {
+      "optional": true
+    }
+  },
+  "devDependencies": {
+    "@esbuild/win32-x64": "0.28.2",
+    "esbuild": "^0.28.1"
+  },
+  "license": "MIT",
+  "scripts": {
+    "build:client": "node scripts/build-client.mjs",
+    "check:client": "node scripts/build-client.mjs --check",
+    "test": "node tests/run.mjs",
+    "verify:plugin": "node tests/verify-plugin.mjs",
+    "verify:flow": "node tests/verify-flow.mjs",
+    "verify:render": "node tests/verify-render.mjs",
+    "verify:assets": "node tests/verify-real-assets.mjs",
+    "verify:deploy": "node scripts/verify-deploy.mjs",
+    "verify:bundled": "node scripts/verify-bundled-assets.mjs",
+    "pack": "node scripts/pack.mjs"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/LilianDOF4/gal-eat.git"
+  },
+  "homepage": "https://github.com/LilianDOF4/gal-eat"
+}
